@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Промокоды Standoff 2</title>
+    <style>
+        /* CSS: Задаем черный фон и шрифт для всего сайта */
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* Стиль для заголовка */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Контейнер для промокодов (выстраивает их в ряд) */
+        .promo-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Стиль для каждого отдельного промокода */
+        .promo-code {
+            font-family: 'Courier New', Courier, monospace; /* Моноширинный шрифт */
+            font-size: 1.8rem;
+            font-weight: bold;
+            background-color: #1a1a1a; /* Темно-серый цвет плашки */
+            padding: 15px 25px;
+            border-radius: 8px;
+            border: 1px solid #333333;
+            letter-spacing: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Заголовок сайта -->
+    <h1>10 ПРОМОКОДОВ НА ИЮНЬ 2026 ДЛЯ ИГРЫ STANDOFF 2</h1>
+
+    <!-- Сюда JavaScript вставит сгенерированные коды -->
+    <div class="promo-container" id="promo-list"></div>
+
+    <script>
+        // JavaScript: Функция генерации одного случайного промокода
+        function generateRandomCode(length) {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            // Форматируем код, добавляя дефис посередине (например, ABCD-1234)
+            return result.substring(0, 4) + '-' + result.substring(4, 8);
+        }
+
+        // Находим контейнер на странице
+        const container = document.getElementById('promo-list');
+
+        // Создаем ровно 10 промокодов при каждой перезагрузке страницы
+        for (let i = 0; i < 10; i++) {
+            const codeElement = document.createElement('div');
+            codeElement.className = 'promo-code';
+            codeElement.innerText = generateRandomCode(8); // Длина кода 8 символов
+            container.appendChild(codeElement);
+        }
+    </script>
+
+</body>
+</html>
